@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--ut((r_je+x$g)feaj4lc##nsyj4-qtpwlqnx6($&!m@eqr%ib'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -79,11 +81,29 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASE_URL = {
+    # 'default': {
+    #     'ENGINE': dj_database_url.parse(os.environ.get("postgres://blog_post_db_xljn_user:9Yf6hqFdEzA5ihRMAutkiG64PBAhPNUm@dpg-cpabfudds78s73cva2p0-a.oregon-postgres.render.com/blog_post_db_xljn")),
+ 
+    # }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    # "default": dj_database_url.parse(os.environ.get("postgres://blog_post_db_xljn_user:9Yf6hqFdEzA5ihRMAutkiG64PBAhPNUm@dpg-cpabfudds78s73cva2p0-a.oregon-postgres.render.com/blog_post_db_xljn"))
+    
+# }
+
+# DATABASE_URL = {
+#     "default": dj_database_url.parse(os.environ.get("postgres://blog_post_db_xljn_user:9Yf6hqFdEzA5ihRMAutkiG64PBAhPNUm@dpg-cpabfudds78s73cva2p0-a.oregon-postgres.render.com/blog_post_db_xljn"))
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://blog_post_db_xljn_user:9Yf6hqFdEzA5ihRMAutkiG64PBAhPNUm@dpg-cpabfudds78s73cva2p0-a.oregon-postgres.render.com/blog_post_db_xljn',
+        conn_max_age=600
+    )
 }
 
 
