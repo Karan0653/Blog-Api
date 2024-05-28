@@ -164,6 +164,7 @@ CORS_ALLOW_METHODS = [
     'GET',
     'POST',
     'PUT',
+    'OPTIONS'
 ]
 
 # Allow specific headers if needed
