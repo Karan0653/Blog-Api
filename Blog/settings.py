@@ -154,8 +154,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://bloggerssekai-1fgyhpifz-karans-projects-e106fdb1.vercel.app/manifest.json",
-    '*'
+    "https://bloggerssekai-1fgyhpifz-karans-projects-e106fdb1.vercel.app",
 ]
 
 # test
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'POST',
+    'PUT',
+]
+
+# Allow specific headers if needed
+CORS_ALLOW_HEADERS = [
+    'content-type',
+]
